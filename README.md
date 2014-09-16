@@ -27,7 +27,8 @@ The filter transforms this to the equivalent of:
 <div id="fig:image-ref" class="class1 class2">
 ![Image Caption!](image-place.png)
 
-</div> ```
+</div>
+```
 
 Currently, `pandoc-internalref` only works for figures. What happens:
 
