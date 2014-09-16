@@ -12,12 +12,12 @@ The filters here try to help.
 
 ## Usage
 
-1)  git clone the directory to your favorite folder
+1.  git clone the directory to your favorite folder
 
-2)  compile the filters you want with ghc (e.g. `ghc --make
+2.  compile the filters you want with ghc (e.g. `ghc --make
     pandoc-internalref.hs`) -- at some point I might push these onto cabal
 
-3)  add the filter when you run pandoc (`pandoc in.md -o out.pdf --filter
+3.  add the filter when you run pandoc (`pandoc in.md -o out.pdf --filter
     PATH/TO/pandoc-internalref`)
 
 ## pandoc-internalref
