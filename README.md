@@ -12,8 +12,8 @@ The filters here try to help.
 
 ## pandoc-internalref
 
-`pandoc-internalref` tries to implement the internal reference format (suggested
-by jgm)[https://github.com/jgm/pandoc/issues/813#issuecomment-21417209]:
+`pandoc-internalref` tries to implement the internal reference format
+[suggested by jgm](https://github.com/jgm/pandoc/issues/813#issuecomment-21417209):
 
 ```markdown
 ![Image Caption!](image-place.png){#fig:image-ref class1 class2}
@@ -44,7 +44,7 @@ Currently, `pandoc-internalref` only works for figures. What happens:
 This should work for most cases, though it does mean that at the present moment
 you need to name/number your figures by hand for formats other than latex:
 I can't think of a good way to write text that sounds good in latex "Figure
-`\ref`" and html "The figure" modes.
+`\ref`" and html "The figure" writing styles. Suggestions welcome.
 
 It might be possible to make the latex filter write something like `Figure
 \ref*{}`
@@ -58,7 +58,7 @@ It might be possible to make the latex filter write something like `Figure
 `pandoc-sideways` reads the classes of a div to apply special LaTeX
 environments.
 
-This is hard, as the filter has to write all of the latex -- pandoc's standard
+This is a pain, as the filter has to write all of the latex -- pandoc's standard
 writer is no help.
 
 ### TODO:
