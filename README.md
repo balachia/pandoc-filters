@@ -4,9 +4,9 @@
 academic writing experience. In particular, we're missing a few important
 features from LaTeX:
 
- - internal references to figures and tables
- - ability to use certain formatting
- environments (e.g. sidewaysfigure / sidewaystable)
+ -  internal references to figures and tables
+ -  ability to use certain formatting environments (e.g. sidewaysfigure
+    / sidewaystable)
 
 The filters here try to help.
 
@@ -15,14 +15,17 @@ The filters here try to help.
 `pandoc-internalref` tries to implement the internal reference format (suggested
 by jgm)[https://github.com/jgm/pandoc/issues/813#issuecomment-21417209]:
 
-```markdown ![Image Caption!](image-place.png){#fig:image-ref class1 class2}
+```markdown
+![Image Caption!](image-place.png){#fig:image-ref class1 class2}
 
-What a great (figure!)[#fig:image-ref] ```
+What a great (figure!)[#fig:image-ref]
+```
 
 The filter transforms this to the equivalent of:
 
-```markdown <div id="fig:image-ref" class="class1 class2"> ![Image
-Caption!](image-place.png)
+```markdown
+<div id="fig:image-ref" class="class1 class2">
+![Image Caption!](image-place.png)
 
 </div> ```
 
