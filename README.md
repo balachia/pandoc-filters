@@ -1,8 +1,8 @@
 # pandoc-filters
 
-[Pandoc](http://johnmacfarlane.net/pandoc/) needs a bit of help to give the full
-academic writing experience. In particular, we're missing a few important
-features from LaTeX:
+[Pandoc](http://johnmacfarlane.net/pandoc/) needs a bit of help to give the
+[full academic writing experience](https://github.com/jgm/pandoc/issues/813). In
+particular, we're missing a few important features from LaTeX:
 
  -  internal references to figures and tables
  -  ability to use certain formatting environments (e.g. sidewaysfigure

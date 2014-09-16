@@ -28,7 +28,7 @@ baseSeq :: Pandoc -> IO Pandoc
 baseSeq = (walkM floatAttribute)
 {-baseSeq = (walkM fixlink) >=> (walkM floatAttribute)-}
 
--- fix latex
+-- fix latex internal ref's
 fixlink :: Inline -> IO Inline
 fixlink (Link txt ('#':ident, x)) 
     | Just subident <- stripPrefix "fig:" ident = return reflink 
@@ -36,6 +36,7 @@ fixlink (Link txt ('#':ident, x))
     where reflink = Link [RawInline (Format "latex") ("\\ref*{" ++ ident ++ "}")] ("#" ++ ident, x)
 fixlink x = return x
 
+-- read attributes into a div
 floatAttribute:: Block -> IO Block
 floatAttribute (Para ((Image caps (src,_)):(Str ('{':'#':label)):rest)) = 
     return (Div ((delete '}' label), classes, []) [Para [Image caps' (src, "fig:")]])
@@ -44,6 +45,7 @@ floatAttribute (Para ((Image caps (src,_)):(Str ('{':'#':label)):rest)) =
         classes = [delete '}' str | Str str <- rest]
 floatAttribute x = return x
 
+-- add \label to image captions
 latexRef :: Block -> IO Block
 latexRef (Div (ident, classes, kvs) [Para [Image caps src]]) = 
     return (Div (ident, classes, kvs) [Para [Image (caps ++ [RawInline (Format "tex") ("\\label{" ++ ident ++ "}")]) src]])
