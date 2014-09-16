@@ -58,7 +58,7 @@ I can't think of a good way to write text that sounds good in latex "Figure
 `\ref`" and html "The figure" writing styles. Suggestions welcome.
 
 It might be possible to make the latex filter write something like `Figure
-\ref*{}`
+\ref*{}` if not for capitalization issues.
 
 ### TODO:
 
