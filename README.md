@@ -60,9 +60,15 @@ I can't think of a good way to write text that sounds good in latex "Figure
 It might be possible to make the latex filter write something like `Figure
 \ref*{}` if not for capitalization issues.
 
-### TODO:
+### Issues:
 
- - tables
+ - pandoc writes tables with `longtable`. These break across pages, which can
+    be less than ideal. Unfortunately, there is no straightforward way to get
+    pandoc to write a different table format or to reprocess to a different table
+    format. I recommend
+    [gpp](http://files.nothingisreal.com/software/gpp/gpp.html) if you need
+    [tables to
+    work](http://randomdeterminism.wordpress.com/2012/06/01/how-i-stopped-worring-and-started-using-markdown-like-tex/).
 
 ## pandoc-dropinenv
 
