@@ -16,7 +16,7 @@ The filters here try to help.
 
 2.  in the folder: run `cabal configure`, then `cabal build`, then `cabal install`
 
-3.  if cabal's bin directory is in your path, run pandoc with the filter
+3.  if cabal's bin directory is in your PATH, run pandoc with the filter
     (`pandoc in.md -o out.pdf --filter pandoc-internalref`)
 
 ## pandoc-internalref
