@@ -43,10 +43,28 @@ floatAttribute (Para ((Image caps (src,_)):(Str ('{':'#':label)):rest)) =
     where
         caps' = caps
         classes = [delete '}' str | Str str <- rest]
+floatAttribute (Table caps aligns widths headers rows)
+    | attribCaps /= [] = return (Div (ident, classes', []) [Table goodCaps aligns widths headers rows])
+    where
+        (goodCaps, attribCaps) = break capStartsAttribs caps
+        capStartsAttribs (Str capcontent) = head capcontent == '{'
+        capStartsAttribs x = False
+        classes = [delete '{' (delete '}' str) | Str str <- attribCaps]
+        ident   | (head $ head classes) == '#' = tail $ head classes
+                | otherwise = ""
+        classes'    | (head $ head classes) == '#' = tail classes
+                    | otherwise = classes
+        {-goodCaps = takeWhile (\a -> ) caps-}
+        {-Str lastCap = last caps-}
+        {-hasTableAttribs = (head lastCap == '{') && (tail lastCap == '}')-}
 floatAttribute x = return x
 
 -- add \label to image captions
 latexRef :: Block -> IO Block
 latexRef (Div (ident, classes, kvs) [Para [Image caps src]]) = 
-    return (Div (ident, classes, kvs) [Para [Image (caps ++ [RawInline (Format "tex") ("\\label{" ++ ident ++ "}")]) src]])
+    return (Div (ident, classes, kvs)
+        [Para [Image (caps ++ [RawInline (Format "tex") ("\\label{" ++ ident ++ "}")]) src]])
+latexRef (Div (ident, classes, kvs) [Table caps aligns widths headers rows]) = 
+    return (Div (ident, classes, kvs)
+        [Table (caps ++ [RawInline (Format "tex") ("\\label{" ++ ident ++ "}")]) aligns widths headers rows])
 latexRef x = return x
