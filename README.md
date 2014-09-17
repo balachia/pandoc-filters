@@ -64,6 +64,25 @@ It might be possible to make the latex filter write something like `Figure
 
  - tables
 
+## pandoc-dropinenv
+
+Pandoc is opinionated about what latex it writes -- swapping out environments
+(e.g. figure for sideways figure, or longtable for anything else) would take
+substantial work as a pandoc filter.
+
+Instead, `pandoc-dropinenv` tries to write hooks for a tex postprocessor
+(`pandoc-postprocess.py`) to muck around with the tex directly. At present this
+handles figure -> sidewaysfigure well, and tables not at all.
+
+## pandoc-postprocess
+
+`pandoc-postprocess.py` is NOT a pandoc filter but is a python post-processor
+for tex code. Use pandoc to make tex files, then use `python
+pandoc-postprocess.py` to make it better. Currently, this postprocessor can
+only replace one environment name by another. This works well for figure ->
+sideways figure. It does NOT work for converting pandoc's preferred longtable
+into a different table format.
+
 ## pandoc-sideways
 
 `pandoc-sideways` reads the classes of a div to apply special LaTeX
@@ -71,6 +90,8 @@ environments.
 
 This is a pain, as the filter has to write all of the latex -- pandoc's standard
 writer is no help.
+
+At present, this filter DOES NOT WORK.
 
 ### TODO:
 
