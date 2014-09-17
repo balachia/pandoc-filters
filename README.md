@@ -29,7 +29,7 @@ The filters here try to help.
 ```markdown
 ![Image Caption!](image-place.png){#fig:image-ref class1 class2}
 
-What a great (figure!)[#fig:image-ref]
+What a great [figure!](#fig:image-ref)
 ```
 
 The filter transforms this to the equivalent of:
